@@ -18,9 +18,7 @@ chromedriver.install()
 
 
 def search(driver, date):
-    """
-    search by date
-    """
+    
     driver.get("https://www.sharesansar.com/today-share-price")
     WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.XPATH, "//input[@id='fromdate']"))
@@ -28,7 +26,7 @@ def search(driver, date):
     date_input = driver.find_element("xpath", "//input[@id='fromdate']")
     time.sleep(2)
     search_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//input[@id='fromdate']")))
-    # search_btn = driver.find_element("xpath", "//button[@id='btn_todayshareprice_submit']")
+    
     date_input.send_keys(date)
     search_btn.click()
     if driver.find_elements("xpath", "//*[contains(text(), 'Could not find floorsheet matching the search criteria')]"):
@@ -52,7 +50,7 @@ def get_page_table(driver, table_class):
 
 def scrape_data(driver, date):
     search(driver, date=date)
-    df_list = []  # List to store DataFrames
+    df_list = [] 
     count = 0
     while True:
         count += 1
@@ -72,10 +70,10 @@ def scrape_data(driver, date):
 
 
 def clean_df(df):
-    new_df = df.drop_duplicates(keep='first') # drop all duplicates
-    new_header = new_df.iloc[0] # grabing the first row for the header
-    new_df = new_df[1:] # taking the data lower than the header row
-    new_df.columns = new_header # setting the header row as the df header
+    new_df = df.drop_duplicates(keep='first') 
+    new_header = new_df.iloc[0] 
+    new_df = new_df[1:]
+    new_df.columns = new_header 
     new_df.drop(["S.No"], axis=1, inplace=True)
     return new_df
 
@@ -88,13 +86,12 @@ def main():
     driver.set_page_load_timeout(120)
     
     # Set the desired date here
-    date = "2024/08/07"  # Change this to the date you want to scrape
-    
+    date = "2024/08/07"  
     search(driver, date)
     df = scrape_data(driver, date)
     final_df = clean_df(df)
     
-    # Ensure 'data' directory exists
+    
     if not os.path.exists('data'):
         os.makedirs('data')
     
