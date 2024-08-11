@@ -37,17 +37,17 @@ Project Steps and Progress
 1. Data Collection:
     [✅ ] Scraper to Get Data from the Stock Market
     [✅ ] Scraper to Get Daily FloorSheet 
-    [🟨 ] Scraper to Get Data of Brokers
+    [✅ ] Scraper to Get Data of Brokers
     [✅ ] Consolidate the Stock Market Data into One File
  
 2. Data Preprocessing:
     [✅ ] Clean and Normalize Data
-    [🟨 ] Format Broker Data
-    [🟨 ] Combine Stock Market and Broker Data
+    [✅ ] Format Broker Data
+    [✅ ] Combine Stock Market and Broker Data
  
 3. Data Analysis:
-    [ ] Analyze Broker Activities
-    [✅ ] Volume Spike Detection
+    [🟨 ] Analyze Broker Activities
+    [🟨 ] Volume Spike Detection
     [ ] Price Movement Analysis
  
 4. Signal Generation:
@@ -72,5 +72,6 @@ Project Steps and Progress
     [ ] Optimize Algorithms
  
 9. Documentation:
-    [✅ ] Document the Code
-    [✅ ] Write a Summary Report
+    [🟨 ] Document the Code
+    [🟨 ] Write a Summary Report
+
